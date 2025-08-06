@@ -1,1 +1,7 @@
 <router-outlet />
+<div>
+  <h1>{{ 'HOME.TITLE' | translate }}</h1>
+
+  <button (click)="changeLanguage('en')">{{ 'BUTTON.CHANGE_LANGUAGE' | translate }} (English)</button>
+  <button (click)="changeLanguage('fr')">{{ 'BUTTON.CHANGE_LANGUAGE' | translate }} (Français)</button>
+</div>
