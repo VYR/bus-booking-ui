@@ -1,0 +1,16 @@
+<h2>Search Buses</h2>
+<form (ngSubmit)="search()">
+  <input [(ngModel)]="from" name="from" placeholder="From" required>
+  <input [(ngModel)]="to" name="to" placeholder="To" required>
+  <input [(ngModel)]="date" name="date" type="date" required>
+  <button type="submit">Search</button>
+</form>
+
+<div *ngIf="buses.length > 0">
+  <h3>Available Buses</h3>
+  <ul>
+    <li *ngFor="let bus of buses">
+      {{ bus.fromCity }} to {{ bus.toCity }} on {{ bus.departureDate }} at {{ bus.departureTime }} - ₹{{ bus.price }}
+    </li>
+  </ul>
+</div>
