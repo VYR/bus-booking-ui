@@ -2,9 +2,27 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
 
+## Add Tailwind CSS
+
 ## Development server
 
-To start a local development server, run:
+1. Install Tailwind CSS
+```bash
+npm install tailwindcss @tailwindcss/postcss postcss --force
+```
+2. Configure PostCSS Plugins in .postcssrc.json
+```bash
+{
+  "plugins": {
+    "@tailwindcss/postcss": {}
+  }
+}
+```
+3. Import Tailwind CSS in styles.css
+```bash
+@import "tailwindcss";
+```
+4. To start a local development server, run:
 
 ```bash
 ng serve

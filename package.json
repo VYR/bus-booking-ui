@@ -24,7 +24,10 @@
     "@ngrx/router-store": "^19.2.1",
     "@ngrx/store": "^19.2.1",
     "@ngrx/store-devtools": "^19.2.1",
+    "@tailwindcss/postcss": "^4.1.11",
+    "postcss": "^8.5.6",
     "rxjs": "~7.8.0",
+    "tailwindcss": "^4.1.11",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
