@@ -3,11 +3,15 @@ import { Store } from '@ngrx/store';
 import * as DashboardActions from '../../state/dashboard.actions';
 import { CommonModule } from '@angular/common';
 import { AsyncPipe } from '@angular/common';
+import { UdCardComponent } from '../../../../shared/components/ud-card/ud-card.component';
 
 @Component({
   selector: 'app-dashboard-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+  UdCardComponent
+  ],
   templateUrl: './dashboard-home.component.html',
   styleUrl: './dashboard-home.component.css'
 })
@@ -18,5 +22,6 @@ export class DashboardHomeComponent implements OnInit {
 
   ngOnInit() {
     //this.store.dispatch(DashboardActions.loadDashboard());
+    console.log("hello dashboard");
   }
 }
