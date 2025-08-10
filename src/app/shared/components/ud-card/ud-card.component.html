@@ -1,17 +1,102 @@
-<!-- <div class="card">
-  <ng-content select="[card-header]"></ng-content>
-  <div class="card-body">
-    <ng-content></ng-content>
-  </div>
-  <ng-content select="[card-footer]"></ng-content>
-</div> -->
-<div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+<!--
+Cards reference: https://www.material-tailwind.com/docs/html/card
+-->
+<!--Basic card-->
+@if (type===CARD_TYPES.FULL_PLAIN_CARD) {
+<div [class]="classes" class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-100">
   <div class="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
-    <span class="text-sm font-medium text-slate-600">
+    <ng-content select="[card-header]"></ng-content>
+  </div>
+  <div class="p-4">
+    <ng-content select="[card-body]"></ng-content>
+  </div>
+  <div class="mx-3 border-t border-slate-200 pb-3 pt-2 px-1">
+    <ng-content select="[card-footer]"></ng-content>
+  </div>
+</div>
+}
+<!--// Basic card-->
+<!--Card with Image-->
+@if (type===CARD_TYPES.CARD_WITH_IMAGE) {
+<div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+  <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
+    <img src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="card-image" />
+  </div>
+  <div class="p-4">
+    <h6 class="mb-2 text-slate-800 text-xl font-semibold">
+      Website Review Check
+    </h6>
+    <p class="text-slate-600 leading-normal font-light">
+      The place is close to Barceloneta Beach and bus stop just 2 min by walk
+      and near to &quot;Naviglio&quot; where you can enjoy the main night life in
+      Barcelona.
+    </p>
+  </div>
+  <div class="px-4 pb-4 pt-0 mt-2">
+    <button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
+      Read more
+    </button>
+  </div>
+</div>
+}
+<!-- // Card with Image-->
+<!-- Card with Link -->
+ @if (type===CARD_TYPES.CARD_WITH_LINK) {
+ <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">
+  <div class="flex items-center mb-4">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-slate-600">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+    </svg>
+    <h5 class="ml-3 text-slate-800 text-xl font-semibold">
+      Website Review Check
+    </h5>
+  </div>
+  <p class="block text-slate-600 leading-normal font-light mb-4">
+    Because it&apos;s about motivating the doers. Because I&apos;m here to follow my dreams and inspire others.
+  </p>
+  <div>
+    <a href="#" class="text-slate-800 font-semibold text-sm hover:underline flex items-center">
+      Learn More
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </a>
+  </div>
+</div>
+ }
+<!-- // Card with Link -->
+<!-- Card with Header-->
+  @if (type===CARD_TYPES.ONLY_HEADER_BODY) {
+ <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+  <div class="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
+    <span class="text-sm text-slate-600 font-medium">
       Header for the card
     </span>
   </div>
 
+  <div class="p-4">
+    <h5 class="mb-2 text-slate-800 text-xl font-semibold">
+      Website Review Check Update from Our Team in San Francisco
+    </h5>
+    <p class="text-slate-600 leading-normal font-light">
+      The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.
+    </p>
+  </div>
+</div>
+  }
+<!-- // Card with Header-->
+ <!-- Card with Header-->
+  @if (type===CARD_TYPES.ONLY_BODY) {
+ <div [class]="classes"  class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200">
+  <div class="p-4">
+    <ng-content select="[card-body-2]"></ng-content>
+  </div>
+</div>
+  }
+<!-- // Card with Header-->
+<!-- Card with Footer -->
+  @if (type===CARD_TYPES.ONLY_BODY_FOOTER) {
+ <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
   <div class="p-4">
     <h5 class="mb-2 text-slate-800 text-xl font-semibold">
       Website Review Check Update from Our Team in San Francisco
@@ -26,3 +111,6 @@
     </span>
   </div>
 </div>
+  }
+<!-- // Card with Footer -->
+

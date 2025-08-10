@@ -7,13 +7,8 @@ export const routes: Routes = [
       import('./layout/layout.routes').then(m => m.routes),
   },
   {
-    path: 'dashboard',
-    loadChildren: () =>
-      import('./features/dashboard/dashboard.routes').then(m => m.routes),
-  },
-  {
     path:"**",
-    redirectTo:"/dashboard"
+    redirectTo:"/"
   }
   // {
   //   path: 'users',
