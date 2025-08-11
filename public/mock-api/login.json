@@ -1,0 +1,12 @@
+{
+  "status":"success",
+  "message":"Login successful",
+  "data":{
+    "user":{
+      "firstName":"",
+      "lastName":"",
+      "email":"",
+      "token":"hello"
+    }
+  }
+}

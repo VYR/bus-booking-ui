@@ -1,0 +1,7 @@
+{
+  "login":{
+    "endpoint":"login",
+    "useMockApi":false,
+    "mockApiEndPoint":"mock-api/login.json"
+  }
+}
