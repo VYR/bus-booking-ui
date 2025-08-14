@@ -1,0 +1,33 @@
+<app-ud-card
+    [type]="cardTypes.ONLY_HEADER_BODY"
+    [classes]="'w-full h-[100%] overflow-y-auto rounded-lg'"
+>
+    <ng-container card-header-3>
+        <div class="flex flex-row justify-between">
+            <h5 class="mb-2 text-slate-800 text-xl font-semibold">Dashboard</h5>
+            <div>Icons</div>
+        </div>
+    </ng-container>
+    <ng-container card-body-3>
+       <div class="flex flex-col w-full">
+            <div class="flex flex-row gap-4">
+                <div class="flex-6/12">
+                    <highcharts-chart
+                        [constructorType]="chartConstructor"
+                        [options]="chartOptionsH"
+                    />
+                </div>
+                <div class="flex-6/12">
+                    <div id="chart">
+                        <apx-chart
+                            [series]="chartOptions.series"
+                            [chart]="chartOptions.chart"
+                            [labels]="chartOptions.labels"
+                            [responsive]="chartOptions.responsive"
+                        ></apx-chart>
+                    </div>
+                </div>
+            </div>
+       </div>             
+    </ng-container>
+</app-ud-card>

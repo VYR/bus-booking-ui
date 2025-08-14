@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LayoutOneComponent } from './layout-one/layout-one.component';
 import { DashboardHomeComponent } from '../features/dashboard/pages/dashboard-home/dashboard-home.component';
 import { LayoutTwoComponent } from './layout-two/layout-two.component';
+import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 
 export const routes: Routes = [
   {
@@ -16,8 +17,8 @@ export const routes: Routes = [
 
   },
   {
-    path: 'dashboard',
-    component:LayoutOneComponent,
+    path: ':id',
+    component:DashboardLayoutComponent,
     loadChildren: () => import('../features/dashboard/dashboard.routes').then(m => m.routes),
   },
   {

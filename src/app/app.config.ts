@@ -16,11 +16,39 @@ import { provideHotToastConfig } from '@ngxpert/hot-toast';
 import { provideAnimations } from "@angular/platform-browser/animations";
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { provideToastr } from 'ngx-toastr';
+import { provideHighcharts } from "highcharts-angular";
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    provideHighcharts(
+      {
+      // Optional: Define the Highcharts instance dynamically
+      instance: () => import('highcharts'),
+
+      // Global chart options applied across all charts
+      // options: {
+      //   title: {
+      //     style: {
+      //       color: 'tomato',
+      //     },
+      //   },
+      //   legend: {
+      //     enabled: false,
+      //   },
+      // },
+
+      // Include Highcharts additional modules (e.g., exporting, accessibility) or custom themes
+      modules: () => {
+        return [
+          import('highcharts/esm/modules/accessibility'),
+          import('highcharts/esm/modules/exporting'),
+          import('highcharts/esm/themes/sunset'),
+        ];
+      },
+    }
+    ),
     provideAnimations(),
     // provideStore({ app: appReducer }),
     // provideEffects([AppEffects]),

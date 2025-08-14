@@ -9,12 +9,12 @@ import { StatCardComponent } from './components/stat-card/stat-card.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: DashboardHomeComponent,
-    providers: [
-      // provideState('dashboard', dashboardReducer),
-      // provideEffects(DashboardEffects),
-    ],
-
+    path: 'dashboard',
+    component: DashboardHomeComponent
   },
+  {
+    path:'**',
+    redirectTo:"dashboard",
+    pathMatch:"prefix"
+  }
 ];

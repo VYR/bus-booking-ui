@@ -1,1 +1,14 @@
-<p>sidebar works!</p>
+<nav class="flex min-w-[240px] flex-col gap-3 p-2 font-sans text-base font-normal text-blue-gray-700!">
+    @for (item of menuBar; track $index) {
+        <div  
+            *appHasEntitlement="item.uuid"
+            [routerLink]="[item.path]" 
+            routerLinkActive="bg-amber-400" 
+            [routerLinkActiveOptions]="{ exact: true}" 
+            class="menu-item text-blue-800"
+        >           
+           <i [class]="item.icon" class="mr-4 text-[0.9rem]"></i> 
+           <span class="text-[0.84rem] uppercase font-bold ">{{item.name}}</span>
+        </div>
+    }
+  </nav>

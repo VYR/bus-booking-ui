@@ -1,0 +1,28 @@
+@if (withLabel) {
+<div class="relative flex flex-col">
+    <app-ud-input-label
+    [name]="labelName"
+    [class]="labelClass"
+    [requiredClass]="labelRequiredClass"
+    [required]="required"
+    ></app-ud-input-label>
+    <ng-container *ngTemplateOutlet="inputTemplate"></ng-container>
+</div>
+}
+
+@if (!withLabel)  {
+    <ng-container *ngTemplateOutlet="inputTemplate"></ng-container>
+
+}
+
+<ng-template #inputTemplate >
+    <input 
+        [required]="required" 
+        [formControl]="controlName" 
+        [type]="type" 
+        class="text-field form-field-invalid" 
+        [class]="class"
+        [placeholder]="placeholder" 
+        [pattern]="pattern"
+    />
+</ng-template>
