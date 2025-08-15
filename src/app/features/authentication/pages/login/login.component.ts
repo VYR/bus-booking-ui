@@ -10,6 +10,7 @@ import { UdInputComponent } from "../../../../shared/components/ud-input/ud-inpu
 import { UdCheckboxComponent } from "../../../../shared/components/ud-checkbox/ud-checkbox.component";
 import { UdButtonComponent } from "../../../../shared/components/ud-button/ud-button.component";
 import { Router } from '@angular/router';
+import { AuthSandboxService } from '../../../../core/services/auth-sandbox.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit{
   cardTypes=CARD_DESIGN_TYPES;
   routes=ROUTES;
-  authService:AuthService=inject(AuthService);
+  sandbox:AuthSandboxService=inject(AuthSandboxService);
   appContext:ApplicationContextService=inject(ApplicationContextService);
   form!:UntypedFormGroup;
   constructor(
@@ -46,8 +47,8 @@ export class LoginComponent implements OnInit{
   login(){
     const formData:any=this.form.value;
     console.log(formData);
-    // this.authService.login().subscribe();
-    this.router.navigate([ROUTES.HOME]);
+    this.sandbox.login().subscribe();
+    this.router.navigate([ROUTES.SUPER_ADMIN_DASHBOARD]);
   }
   get email(){
     return this.form.get('email') as UntypedFormControl;

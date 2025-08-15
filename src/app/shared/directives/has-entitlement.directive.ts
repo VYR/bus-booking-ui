@@ -11,7 +11,9 @@ export class HasEntitlementDirective {
     'CUSTOMERS',
     'PERMISSIONS',
     'ROLE_PERMISSIONS',
-    'DASHBOARD'
+    'DASHBOARD',
+    'LIST_OF_PERMISSIONS',
+    'ADD_PERMISSIONS'
   ];
   constructor(
     private templateRef: TemplateRef<any>,

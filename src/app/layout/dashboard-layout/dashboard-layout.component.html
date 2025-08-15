@@ -40,7 +40,7 @@
                 </app-ud-card>
             </div>
             <div class="relative flex flex-col w-full">
-                <app-ud-card [type]="cardTypes.ONLY_BODY" [classes]="'rounded-0 h-[100vh] mt-[5rem]'">
+                <app-ud-card [type]="cardTypes.ONLY_BODY" [classes]="'rounded-0 min-h-[100vh] mt-[5rem]'">
                     <ng-container card-body-2>
                         <div class="flex flex-col">
                             <app-sidebar></app-sidebar>
@@ -54,7 +54,7 @@
         <div class="z-[1] flex flex-col fixed w-full">
             <app-dashboard-right-header></app-dashboard-right-header>
        </div>
-        <div class="flex flex-col pt-[6rem] px-2">
+        <div class="flex flex-col pt-[6rem] px-2 max-h[100vh]">
             <router-outlet />
         </div>
         

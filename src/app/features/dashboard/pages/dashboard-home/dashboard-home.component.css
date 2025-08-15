@@ -1,7 +1,7 @@
-#chart {
+/* #chart {
   max-width: 380px;
   margin: 35px auto;
   padding: 0;
-}
+} */
 
-.chart { width: 100%; height: 400px; display: block; }
+.chart { width: 100%; height: 50px; display: block; }

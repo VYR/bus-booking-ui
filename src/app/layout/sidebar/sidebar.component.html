@@ -3,8 +3,8 @@
         <div  
             *appHasEntitlement="item.uuid"
             [routerLink]="[item.path]" 
-            routerLinkActive="bg-amber-400" 
-            [routerLinkActiveOptions]="{ exact: true}" 
+            routerLinkActive="dashboard-router-active-bg" 
+            [routerLinkActiveOptions]="{ exact: false}" 
             class="menu-item text-blue-800"
         >           
            <i [class]="item.icon" class="mr-4 text-[0.9rem]"></i> 

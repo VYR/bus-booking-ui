@@ -1,3 +1,4 @@
+import { ConfigService } from '../core/services/config.service';
 import { CACHE_KEYS } from '../shared/shared.constants';
 import { CACHE_KEY_NAMES, CACHE_TYPES } from '../shared/shared.enums';
 import { ICacheModal } from '../shared/shared.models';
@@ -11,8 +12,11 @@ export class ApplicationContextService {
 
   private signalData =signal(null);
   cacheService:CacheService = inject(CacheService);
+  configService:ConfigService = inject(ConfigService);
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   updateSignalData(data:any){
     this.signalData.set(data);
@@ -20,6 +24,10 @@ export class ApplicationContextService {
 
   getSignalData(){
     return this.signalData();
+  }
+
+  getConfigSignalData(){
+    return this.configService.getConfigSignalData();
   }
 
   getLocalData(key:CACHE_KEY_NAMES):ICacheModal{

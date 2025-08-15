@@ -4,13 +4,14 @@ import { AuthService } from '../services/auth.service';
 import { catchError, finalize, throwError } from 'rxjs';
 import { ToasterService } from '../services/toaster.service';
 import { SpinnerService } from '../../shared/services/spinner.service';
+import { AuthSandboxService } from '../services/auth-sandbox.service';
 
     export const authInterceptor: HttpInterceptorFn = (req, next) => {
       const toasterService = inject(ToasterService);
-      const spinnerService = inject(SpinnerService)
-      const authService = inject(AuthService);
+      const spinnerService = inject(SpinnerService);
+      const sandbox = inject(AuthSandboxService);
       spinnerService.show();
-      const token = authService.getToken(); // Method to retrieve your auth token
+      const token = sandbox.getToken(); // Method to retrieve your auth token
       if (token) {
         // Clone the request and add the Authorization header
         req = req.clone({

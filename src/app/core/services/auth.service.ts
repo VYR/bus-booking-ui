@@ -3,30 +3,20 @@ import { ApplicationContextService } from '../../state/application-context.servi
 import { CACHE_KEY_NAMES } from '../../shared/shared.enums';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
+import { ServerInteractionService } from './server-interaction.service';
+import { OPERATIONS } from '../../shared/operations';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private appContext:ApplicationContextService = inject(ApplicationContextService);
-  private httpClient:HttpClient=inject(HttpClient);
+  private server:ServerInteractionService=inject(ServerInteractionService);
 
   constructor() { }
 
-  getToken(){
-    return this.appContext.getSessionData(CACHE_KEY_NAMES.USER_CONFIG)?.user?.token;
-  }
   login(){
-    //https://api.restful-api.dev/objects
-    //http://localhost:4200/mock-api/login.json
-    return this.httpClient.get('https://api.restful-api.dev/objects').pipe(
-      tap(
-        (data:any) => {
-            console.log(data);
-            this.appContext.updateSessionData(CACHE_KEY_NAMES.USER_CONFIG,data);
-        }
-      )
-    );
+    return this.server.processGetRequest(OPERATIONS.LOGIN);
   }
+
 }

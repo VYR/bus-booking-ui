@@ -14,4 +14,27 @@
     .menu-item{
         @apply cursor-pointer flex flex-row items-baseline  w-full p-3 leading-tight transition-all rounded-lg outline-none text-start bg-gray-200; 
     }
+    .h-menu-item{
+        @apply pl-3 pr-3 py-2 cursor-pointer rounded-[0.5rem] mb-2 bg-gray-200 text-blue-500 min-w-fit font-bold;
+    }
+    .card-heading{
+        @apply mb-2 text-slate-800 text-xl font-semibold;
+    }
+}
+
+.dashboard-router-active-bg{
+    background-color: #b9e9f5;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 0.3rem;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ebe6e7;
+    border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ebe6e7;
 }

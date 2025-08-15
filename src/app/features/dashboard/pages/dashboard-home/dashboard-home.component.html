@@ -1,10 +1,12 @@
+<div class="flex flex-col gap-4 mb-4 h-[100vh] overflow-y-auto">
+    <app-ud-horizantal-menu></app-ud-horizantal-menu>
 <app-ud-card
     [type]="cardTypes.ONLY_HEADER_BODY"
     [classes]="'w-full h-[100%] overflow-y-auto rounded-lg'"
 >
     <ng-container card-header-3>
         <div class="flex flex-row justify-between">
-            <h5 class="mb-2 text-slate-800 text-xl font-semibold">Dashboard</h5>
+            <h5 class="card-heading">Dashboard</h5>
             <div>Icons</div>
         </div>
     </ng-container>
@@ -12,10 +14,18 @@
        <div class="flex flex-col w-full">
             <div class="flex flex-row gap-4">
                 <div class="flex-6/12">
-                    <highcharts-chart
+                    <!-- <highcharts-chart
                         [constructorType]="chartConstructor"
                         [options]="chartOptionsH"
-                    />
+                    /> -->
+                     <div id="chart2">
+                        <apx-chart
+                            [series]="chartOptions.series"
+                            [chart]="chartOptions.chart"
+                            [labels]="chartOptions.labels"
+                            [responsive]="chartOptions.responsive"
+                        ></apx-chart>
+                    </div>
                 </div>
                 <div class="flex-6/12">
                     <div id="chart">
@@ -31,3 +41,20 @@
        </div>             
     </ng-container>
 </app-ud-card>
+<app-ud-card
+    [type]="cardTypes.ONLY_HEADER_BODY"
+    [classes]="'w-full h-[100%] overflow-y-auto rounded-lg'"
+>
+    <ng-container card-header-3>
+        <div class="flex flex-row justify-between">
+            <h5 class="mb-2 text-slate-800 text-xl font-semibold">Requests</h5>
+            <div>Icons</div>
+        </div>
+    </ng-container>
+    <ng-container card-body-3>
+       <div class="flex flex-col w-full">
+        <app-dashboard-requests></app-dashboard-requests>
+    </div>            
+    </ng-container>
+</app-ud-card>
+</div>

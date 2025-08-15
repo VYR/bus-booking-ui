@@ -13,6 +13,8 @@ import {
 } from "ng-apexcharts";
 import { SharedModule } from '../../../../shared/shared.module';
 import { HighchartsChartComponent, ChartConstructorType } from 'highcharts-angular';
+import { DashboardRequestsComponent } from "../dashboard-requests/dashboard-requests.component";
+import { UdHorizantalMenuComponent } from '../../../../shared/components/ud-horizantal-menu/ud-horizantal-menu.component';
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
@@ -25,9 +27,10 @@ export type ChartOptions = {
   imports: [
     SharedModule,
     UdCardComponent,
+    UdHorizantalMenuComponent,
     NgApexchartsModule,
-    HighchartsChartComponent
-    
+    // HighchartsChartComponent,
+    DashboardRequestsComponent
 ],
   templateUrl: './dashboard-home.component.html',
   styleUrl: './dashboard-home.component.css'

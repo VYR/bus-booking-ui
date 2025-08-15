@@ -1,5 +1,5 @@
 // app.config.ts
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, inject, provideAppInitializer, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -17,11 +17,22 @@ import { provideAnimations } from "@angular/platform-browser/animations";
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { provideToastr } from 'ngx-toastr';
 import { provideHighcharts } from "highcharts-angular";
-
+import { ConfigService } from './core/services/config.service';
+//  export  function initializeAppConfig() {
+//     const appConfigService = inject(ConfigService);
+//     return () => appConfigService.loadConfig(); // loadConfig returns a Promise
+//   }
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    ConfigService,
+    provideAppInitializer(
+      () => {
+        const appConfigService = inject(ConfigService);
+        appConfigService.loadConfig();
+      }
+    ),
     provideHighcharts(
       {
       // Optional: Define the Highcharts instance dynamically

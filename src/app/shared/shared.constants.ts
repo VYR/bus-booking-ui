@@ -1,5 +1,3 @@
-import { ICacheKeys } from "./shared.models"
-
 export const ROUTES={
   HOME:'/',
   LOGIN:'/authentication/login',
@@ -13,4 +11,12 @@ export const ROUTES={
 }
 export const CACHE_KEYS:any={
   USER_CONFIG : 'USER_CONFIG'
+}
+
+export const CONFIGURATION={
+  USER_ENCRYPTION_FOR_CONFIG_SERVICE:false,
+  ORIGINAL_CONFIG_PATH:'/config/dev.json',
+  ENCRYPTED_CONFIG_PATH:'/config_encrypted/env.json',
+  ORIGINAL_API_CONFIG_PATH:'/config/api-operations.json',
+  ENCRYPTED_API_CONFIG_PATH:'/config_encrypted/api-operations.json'
 }
