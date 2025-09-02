@@ -20,3 +20,32 @@ export interface IAPIOperation{
     useMockApi:boolean;
     isFileUpload:boolean;
 }
+
+export interface ITableConfig{
+    data:Array<any>;
+    cols:Array<ITableColumns>;
+    selection?:boolean;
+    useDefaultFilter?:boolean;
+    exportExcel?:boolean;
+    exportPDF?:boolean;
+}
+
+export interface ITableColumns{
+    uuid?:string;
+    key:string;
+    displayName:string;
+    icon?:string;
+    width?:string;
+    height?:string;
+    type?:ITableColumnType
+}
+
+export enum ITableColumnType{
+    icon='icon',
+    link='link',
+    amount='amount',
+    date='date',
+    approve='approve',
+    reject='reject',
+    number='number'
+}

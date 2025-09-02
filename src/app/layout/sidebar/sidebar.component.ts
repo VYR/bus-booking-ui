@@ -14,20 +14,50 @@ export class SidebarComponent {
     {
       uuid:'DASHBOARD',
       path:'dashboard',
-      icon:'las la-heart',
+      icon:'las la-building',
       name:'Dashboard'
     },
     {
       uuid:'DASHBOARD',
       path:'permissions',
-      icon:'las la-heart',
+      icon:'las la-key',
       name:'Permissions'
     },
     {
       uuid:'DASHBOARD',
-      path:'role-permissions',
-      icon:'las la-heart',
-      name:'Role Permissions'
+      path:'users',
+      icon:'las la-users',
+      name:'Users'
+    },
+    {
+      uuid:'DASHBOARD',
+      path:'vehicles',
+      icon:'las la-bus',
+      name:'Vehicles'
+    },
+    {
+      uuid:'DASHBOARD',
+      path:'transport-routes',
+      icon:'las la-map',
+      name:'Transport Routes'
+    },
+    {
+      uuid:'DASHBOARD',
+      path:'payments',
+      icon:'las la-rupee-sign',
+      name:'Payments'
+    },
+    {
+      uuid:'DASHBOARD',
+      path:'complaints',
+      icon:'las la-file-alt',
+      name:'Complaints'
+    },
+    {
+      uuid:'DASHBOARD',
+      path:'enquiries',
+      icon:'las la-microphone',
+      name:'Enquiries'
     }
   ];
 }

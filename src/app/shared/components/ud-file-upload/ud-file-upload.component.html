@@ -1,0 +1,46 @@
+@if (!isMultiple) {
+    <div class="flex flex-col" [class]="singleUploadClass">
+        <ng-container *ngTemplateOutlet="fileUpload"></ng-container>
+    </div>
+}
+@if (isMultiple) {
+    <div class="flex flex-row" [class]="multipleUploadClass">
+        <div class="flex-[10rem]">            
+            <ng-container *ngTemplateOutlet="fileUpload"></ng-container>
+        </div>
+        <div class="flex-[10rem] min-h-[10rem]">            
+        </div>
+    </div>
+}
+<ng-template #fileUpload>
+        <input #inputFile type="file" hidden [multiple]="isMultiple" (change)="onFileSelected($event.target)"/>
+        <app-ud-card [type]="cardTypes.ONLY_BODY">
+            <ng-container card-body-2>
+                <div class="flex flex-row gap-4 items-center" >
+                    <div class="cursor-pointer" (click)="inputFile.click()">                        
+                        @if (!fileName.length) {
+                        <img src="/assets/images/file-upload.png" class="w-[2rem]"/>
+                        }
+                       @if (fileName.length) {
+                        
+                            @if (!errorMessage.length) {
+                                <img src="/assets/images/green-tick-2.webp" class="w-[3rem]"/>
+                            }
+
+                            @if (errorMessage.length) {
+                                <img src="/assets/images/warning-1.png" class="w-[3rem]"/>
+                            }                       
+                        }
+                        
+                    </div>
+                    <div class="grow">
+                        <p class="text-blue-400 text-md">{{fileName.length?fileName:'Please select a file!'}}</p>
+                        <p class="text-red-500 text-sm">{{errorMessage}}</p>
+                    </div>
+                    @if (fileName.length){
+                        <i (click)="removeFile()" class="las la-trash font-bold text-red-500 self-center place-self-end cursor-pointer"></i>
+                    }
+                </div>
+            </ng-container>
+        </app-ud-card>        
+</ng-template>

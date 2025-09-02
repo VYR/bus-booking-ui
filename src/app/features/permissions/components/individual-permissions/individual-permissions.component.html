@@ -1,0 +1,37 @@
+ <div class="flex flex-col w-full mt-4">
+    <div class="grid grid-flow-col">
+        <div class="w-[30rem] "> 
+            <div class="flex flex-col mb-4">
+                <app-ud-radio-button
+                    [radioType]="'addData'"
+                    [radioValue]="'single'"
+                    (onRadioSelectionChange)="onChange($event)"
+                ></app-ud-radio-button>
+            </div>
+            @if (addType==='single') {
+                <form [formGroup]="form" class="flex flex-col gap-2 mb-[3rem]">
+                    <mat-form-field appearance="fill" class="w-full">
+                        <mat-label>Permision UUID</mat-label>
+                        <input  matInput placeholder="e.g ADD_USER" formControlName="permission_uuid" />
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="w-full">
+                        <mat-label>Permision Name</mat-label>
+                        <input  matInput placeholder="e.g Add Users" formControlName="permission_name" />
+                    </mat-form-field> 
+                    <app-ud-button
+                        [disabled]="form.invalid"
+                        [type]="'submit'"
+                        [label]="'Submit'"
+                        (onButtonClick)="add()"
+                    ></app-ud-button>
+                </form>
+            }
+            @if (addType==='multiple') {
+                <app-ud-file-upload
+                    [allowedFileTypes]="'.xlsx,.csv'"
+                    (onFilesSelected)="onFileSelected($event)"
+                ></app-ud-file-upload>
+            }
+        </div>   
+    </div>
+</div>

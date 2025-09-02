@@ -1,0 +1,15 @@
+@if (radioType==='addData') {
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="radioValue" name="addType" (change)="onRadioSelectionChange.emit(radioValue)">
+        <mat-radio-button value="single">Single</mat-radio-button>
+        <mat-radio-button value="multiple">Multiple</mat-radio-button>
+    </mat-radio-group>
+}
+
+@if (radioType==='loop') {
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="radioValue" name="addType">
+       @for (item of radioOptions; track $index) {
+        <mat-radio-button [value]="item" (change)="onRadioSelectionChange.emit(
+            {selectedValue:radioValue,item})">{{item?.name}}</mat-radio-button>
+       }
+    </mat-radio-group>
+}

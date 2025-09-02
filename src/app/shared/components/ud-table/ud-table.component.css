@@ -7,6 +7,6 @@ table {
   width: 100%;
 }
 
-td, th {
-  width: 25%;
+.mat-column-id {
+    flex: 0 0 100px;
 }

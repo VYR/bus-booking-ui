@@ -1,0 +1,15 @@
+<app-ud-card [type]="cardTypes.ONLY_HEADER_BODY" [classes]="'w-full'">
+        <ng-container card-header-3>
+            <div class="flex flex-row justify-between">
+                <h5 class="card-heading uppercase">List of Customers</h5>
+                <div>
+                    <i class="las la-plus cursor-pointer" [routerLink]="[routes.CUSTOMER.ADD_CUSTOMER]"></i>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container card-body-3>
+            <div class="flex flex-col w-full">
+                <app-ud-table [tableConfig]="tableConfig" (onCellClick)="onCellClick($event)"></app-ud-table>
+            </div>
+        </ng-container>
+    </app-ud-card>

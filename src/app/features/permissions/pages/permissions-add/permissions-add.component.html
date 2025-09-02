@@ -6,7 +6,14 @@
         </ng-container>
         <ng-container card-body-3>
             <div class="flex flex-col w-full">
-
+                <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+                    <mat-tab label="Individual Permissions">
+                        <app-individual-permissions></app-individual-permissions>
+                    </mat-tab>
+                    <mat-tab label="Role Wise Permissions">
+                        <app-role-wise-permissions></app-role-wise-permissions>
+                    </mat-tab>
+                </mat-tab-group>
             </div>
         </ng-container>
     </app-ud-card>

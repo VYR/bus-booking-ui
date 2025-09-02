@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { AngularLineawesomeModule, LaIconLibrary } from "angular-line-awesome";
 import { lasHippo, lasHeart, labAngular } from 'angular-line-awesome/icons';
 import { DirectivesModule } from './directives/directives.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 
@@ -16,7 +18,9 @@ import { DirectivesModule } from './directives/directives.module';
     FormsModule,
     RouterModule,
     DirectivesModule,
-    AngularLineawesomeModule
+    AngularLineawesomeModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports:[
     CommonModule,
@@ -24,7 +28,9 @@ import { DirectivesModule } from './directives/directives.module';
     FormsModule,
     RouterModule,
     DirectivesModule,
-    AngularLineawesomeModule
+    AngularLineawesomeModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class SharedModule {

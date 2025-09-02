@@ -7,6 +7,7 @@ import { DashboardHomeComponent } from './pages/dashboard-home/dashboard-home.co
 import { LayoutOneComponent } from '../../layout/layout-one/layout-one.component';
 import { StatCardComponent } from './components/stat-card/stat-card.component';
 import { PermissionsHomeComponent } from '../permissions/pages/permissions-home/permissions-home.component';
+import { UserHomeComponent } from '../users/pages/user-home/user-home.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,11 @@ export const routes: Routes = [
     path: 'permissions',
     component: PermissionsHomeComponent,
     loadChildren: () => import('../permissions/permissions.routes').then((m) => m.routes)
+  },
+  {
+    path: 'users',
+    component: UserHomeComponent,
+    loadChildren: () => import('../users/users.routes').then((m) => m.routes)
   },
   {
     path:'**',

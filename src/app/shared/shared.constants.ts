@@ -7,8 +7,20 @@ export const ROUTES={
   OWNER_DASHBOARD:'/owner/dashboard',
   EMPLOYEE_DASHBOARD:'/employee/dashboard',
   ADMIN_DASHBOARD:'/admin/dashboard',
-  SUPER_ADMIN_DASHBOARD:'/super-admin/dashboard'
+  SUPER_ADMIN_DASHBOARD:'/super-admin/dashboard',
+  CUSTOMER:{
+    ADD_CUSTOMER:'../add',
+    UPDATE_CUSTOMER:'../details/update'
+  }
 }
+/**
+ *  this.router.navigate(['/list'], {relativeTo: this.route});      //absolute
+    this.router.navigate(['./list'], {relativeTo: this.route});     //child
+    this.router.navigate(['../list'], {relativeTo: this.route});    //sibling
+    this.router.navigate(['../../list'], {relativeTo: this.route}); //parent
+    this.router.navigate(['tabs/list'], {relativeTo: this.route});
+    this.router.navigate(['/tabs/list'], {relativeTo: this.route});
+ */
 export const CACHE_KEYS:any={
   USER_CONFIG : 'USER_CONFIG'
 }

@@ -1,52 +1,14 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, inject, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SharedModule } from '../../shared.module';
-//data
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
-//data
+import { SelectionModel } from '@angular/cdk/collections';
+import { ITableColumnType, ITableConfig } from '../../../core/models/core.model';
+import { ExcelTestService } from '../../../core/services/excel-test.service';
 
 @Component({
   selector: 'app-ud-table',
@@ -56,24 +18,36 @@ const NAMES: string[] = [
     MatPaginatorModule,
     MatFormFieldModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
   ],
   templateUrl: './ud-table.component.html',
   styleUrl: './ud-table.component.css'
 })
-export class UdTableComponent   implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<UserData>;
-
+export class UdTableComponent   implements OnInit, AfterViewInit {
+  excelService:ExcelTestService = inject(ExcelTestService);
+  @Input() tableConfig:ITableConfig;
+  @Output() onCellClick:EventEmitter<any>=new EventEmitter();
+  displayedColumns: string[] = [];
+  dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
+  selection = new SelectionModel<any>(true, []);
+  filterValue:string='';
+  columnTypes=ITableColumnType;
   constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+  }
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+  ngOnInit(): void {    
+    console.log(this.tableConfig.data);
+    if(this.tableConfig.data.length>0){
+      this.displayedColumns=this.tableConfig.cols.map((e:any) => e?.key);
+    }  
+    if(this.tableConfig.selection){
+      this.displayedColumns.unshift('select'); 
+    }
+
+    this.dataSource = new MatTableDataSource(this.tableConfig?.data || []);
   }
 
   ngAfterViewInit() {
@@ -89,20 +63,34 @@ export class UdTableComponent   implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
+    
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: any): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+  exportExcel(){
+    console.log(this.tableConfig.data);
+    this.excelService.generateExcel();
+  }
 }

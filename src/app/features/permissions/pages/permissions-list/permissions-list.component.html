@@ -6,7 +6,7 @@
         </ng-container>
         <ng-container card-body-3>
             <div class="flex flex-col w-full">
-                <app-ud-table></app-ud-table>
+                <app-ud-table [tableConfig]="tableConfig" (onCellClick)="onCellClick($event)"></app-ud-table>
             </div>
         </ng-container>
     </app-ud-card>

@@ -1,0 +1,41 @@
+ <div class="flex flex-col w-full mt-4">            
+    <form [formGroup]="form" class=" gap-2 mb-[3rem]">
+        <div class="grid grid-flow-col">
+            <div class="w-[30rem] "> 
+                <div class="flex flex-col gap-2">
+                    <mat-form-field>
+                        <mat-label>Select Role</mat-label>
+                        <mat-select formControlName="role_id">
+                        @for (food of roles; track food) {
+                            <mat-option [value]="food">{{food}}</mat-option>
+                        }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Choose Permissions</mat-label>
+                        <mat-select formControlName="permission_ids" multiple>
+                            <mat-select-trigger>
+                            {{form.controls['permission_ids'].value?.[0] || ''}}
+                            @if ((form.controls['permission_ids'].value?.length || 0) > 1) {
+                                <span class="example-additional-selection">
+                                (+{{(form.controls['permission_ids'].value?.length || 0) - 1}} {{form.controls['permission_ids'].value?.length === 2 ? 'other' : 'others'}})
+                                </span>
+                            }
+                            </mat-select-trigger>
+                            @for (topping of persissions; track topping) {
+                        <mat-option [value]="topping">{{topping}}</mat-option>
+                        }
+                        </mat-select>
+                    </mat-form-field>
+                    <app-ud-button
+                        [disabled]="form.invalid"
+                        [type]="'submit'"
+                        [label]="'Submit'"
+                        (onButtonClick)="add()"
+                    ></app-ud-button>
+                </div>                       
+                                        
+            </div>
+        </div>
+    </form>
+</div>

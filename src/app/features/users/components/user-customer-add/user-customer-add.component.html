@@ -1,0 +1,36 @@
+<app-ud-card [type]="cardTypes.ONLY_HEADER_BODY" [classes]="'w-full'">
+        <ng-container card-header-3>
+            <div class="flex flex-row">
+                <h5 class="card-heading uppercase">Add Customer</h5>
+            </div>
+        </ng-container>
+        <ng-container card-body-3>
+            <div class="flex flex-col w-full">
+                <div class="flex flex-col w-full mt-4">            
+                    <form [formGroup]="form" class=" gap-2 mb-[3rem]">
+                        <div class="grid grid-flow-col">
+                            <div class="w-[30rem] "> 
+                                <div class="flex flex-col gap-2">
+                                    <mat-form-field appearance="fill" class="w-full">
+                                        <mat-label>Permision UUID</mat-label>
+                                        <input  matInput placeholder="e.g ADD_USER" formControlName="permission_uuid" />
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill" class="w-full">
+                                        <mat-label>Permision Name</mat-label>
+                                        <input  matInput placeholder="e.g Add Users" formControlName="permission_name" />
+                                    </mat-form-field> 
+                                    <app-ud-button
+                                        [disabled]="form.invalid"
+                                        [type]="'submit'"
+                                        [label]="'Submit'"
+                                        (onButtonClick)="add()"
+                                    ></app-ud-button>
+                                </div>                       
+                                                        
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </ng-container>
+    </app-ud-card>
