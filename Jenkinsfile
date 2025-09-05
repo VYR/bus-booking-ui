@@ -2,18 +2,20 @@ pipeline {
     agent any
     tools {nodejs "NODEJS"}
     stages {
-        stage('Build') {
+        stage('Install Dependencies') {
             steps {
                 sh 'npm install'
             }
         }
-        stage('Deliver') {
+        stage('Build') {
             steps {
-                sh 'chmod -R +rwx ./jenkins/scripts/deliver.sh'
-                sh 'chmod -R +rwx ./jenkins/scripts/kill.sh'
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                sh 'ng build --configuration=production'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Add your deployment steps here
+                sh 'scp -r dist/bus-booking/browser vyrvyr@184.168.126.83:/var/www/easybusbooking.com/html'
             }
         }
     }
