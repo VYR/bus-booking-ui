@@ -1,0 +1,9 @@
+{
+  "website":{
+    "title":"Green Bus"
+  },
+  "api":{
+    "url":"",
+    "useMockApis":false
+  }
+}
