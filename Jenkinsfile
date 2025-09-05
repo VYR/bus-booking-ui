@@ -1,4 +1,7 @@
 pipeline {
+    environment { 
+        CI = 'false'
+    }
     agent any
     tools {nodejs "NODEJS"}
     stages {
