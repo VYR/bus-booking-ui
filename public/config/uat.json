@@ -1,0 +1,9 @@
+{
+  "website":{
+    "title":"Green Bus"
+  },
+  "api":{
+    "url":"https://easybusbooking.com/backend/api/",
+    "useMockApis":false
+  }
+}

@@ -6,6 +6,9 @@
 }
 <div class="w-full flex flex-col  gap-3 rounded-md p-2 border-gray-300 border-2 max-h-[30rem] overflow-y-auto">
   <div class="flex flex-row justify-end gap-5 pr-5">
+    @if (selection.hasValue()) {
+      <i class="las la-edit text-2xl cursor-pointer text-blue-600" (click)="multiselectEvent('selectedForEdit')"></i>
+      <i class="las la-trash text-2xl cursor-pointer text-red-400!" (click)="multiselectEvent('selectedForDelete')"></i>}
     @if (tableConfig.exportExcel) {
       <i class="las la-file-excel text-2xl cursor-pointer" (click)="exportExcel()"></i>
     }

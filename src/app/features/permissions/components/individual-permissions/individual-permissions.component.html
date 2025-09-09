@@ -31,6 +31,12 @@
                     [allowedFileTypes]="'.xlsx,.csv'"
                     (onFilesSelected)="onFileSelected($event)"
                 ></app-ud-file-upload>
+                <app-ud-button
+                    [disabled]="!selectedFile"
+                    [type]="'submit'"
+                    [label]="'Submit'"
+                    (onButtonClick)="addBulk()"
+                ></app-ud-button>
             }
         </div>   
     </div>

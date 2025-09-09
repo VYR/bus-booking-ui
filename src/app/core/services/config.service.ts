@@ -14,26 +14,32 @@ export class ConfigService {
   constructor(private http: HttpClient) { }
 
   loadConfig(){
-    forkJoin([
-                this.http.get(
-                  CONFIGURATION.USER_ENCRYPTION_FOR_CONFIG_SERVICE?CONFIGURATION.ENCRYPTED_CONFIG_PATH:CONFIGURATION.ORIGINAL_CONFIG_PATH
-                ),
-                this.http.get(
-                  CONFIGURATION.USER_ENCRYPTION_FOR_CONFIG_SERVICE?CONFIGURATION.ENCRYPTED_API_CONFIG_PATH:CONFIGURATION.ORIGINAL_API_CONFIG_PATH
-                ),
-            ]).subscribe(
-      ([basic,api]) => {
-        const res1:any=basic;
-        const res2:any=api;
-        console.log(res1);
-        console.log(res2);
-        // console.log(environment.);
-        const data={
-          basic:CONFIGURATION.USER_ENCRYPTION_FOR_CONFIG_SERVICE?JSON.parse(this.cryptoService.decrypt(res1?.data)):res1,
-          apiOperations:CONFIGURATION.USER_ENCRYPTION_FOR_CONFIG_SERVICE?JSON.parse(this.cryptoService.decrypt(res2?.data)):res2,
-        };
-        console.log(data);
-        this.configSignalData.set(data);
+    this.http.get('/config/env.json').subscribe(
+      (res:any) => {
+        console.log(res);
+        if(res?.env)
+        forkJoin([
+                    this.http.get(
+                      CONFIGURATION.USE_ENCRYPTION_FOR_CONFIG_SERVICE?CONFIGURATION.ENCRYPTED_CONFIG_PATH+res.env+'.json':CONFIGURATION.ORIGINAL_CONFIG_PATH+res.env+'.json'
+                    ),
+                    this.http.get(
+                      CONFIGURATION.USE_ENCRYPTION_FOR_CONFIG_SERVICE?CONFIGURATION.ENCRYPTED_API_CONFIG_PATH:CONFIGURATION.ORIGINAL_API_CONFIG_PATH
+                    ),
+                ]).subscribe(
+          ([basic,api]) => {
+            const res1:any=basic;
+            const res2:any=api;
+            console.log(res1);
+            console.log(res2);
+            // console.log(environment.);
+            const data={
+              basic:CONFIGURATION.USE_ENCRYPTION_FOR_CONFIG_SERVICE?JSON.parse(this.cryptoService.decrypt(res1?.data)):res1,
+              apiOperations:CONFIGURATION.USE_ENCRYPTION_FOR_CONFIG_SERVICE?JSON.parse(this.cryptoService.decrypt(res2?.data)):res2,
+            };
+            console.log(data);
+            this.configSignalData.set(data);
+          }
+        );
       }
     );
   }

@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "node hooks/set-dev-env && ng serve --configuration development",
     "build": "node hooks/set-prod-env && ng build",
+    "build-uat": "node hooks/set-uat-env && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "pretest": "node hooks"

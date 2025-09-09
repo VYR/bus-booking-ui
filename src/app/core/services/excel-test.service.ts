@@ -109,8 +109,9 @@ export class ExcelTestService {
 });
 
   }
-  jsonData:any=null;
-  readExcelFile(file: any) {
+
+  readExcelFile(file: any,multipleSheets?:boolean,multipleColumns?:boolean): Observable<string | ArrayBuffer> {
+    return new Observable(observer => {
     let workBook:any = null;
     //let jsonData:any = null;
     const reader = new FileReader();
@@ -118,19 +119,35 @@ export class ExcelTestService {
     reader.onload = (event) => {
       const data = reader.result;
       workBook = XLSX.read(data, { type: 'binary' });
-      this.jsonData = workBook.SheetNames.reduce((initial:any, name:any) => {
+      const jsonData =multipleSheets?workBook.SheetNames.reduce((initial:any, name:any) => {
         const sheet = workBook.Sheets[name];
         initial[name] = XLSX.utils.sheet_to_json(sheet);
         return initial;
-      }, {});      
-      console.log('excel data', this.jsonData);     
+      }, {}):XLSX.utils.sheet_to_json(workBook.Sheets[workBook.SheetNames[0]]);      
+      console.log('excel data', jsonData); 
+      if(multipleColumns)  
+      observer.next(jsonData);
+      else{
+        const data=jsonData.reduce(
+          (initial:Array<any>,obj:any) =>{
+            const key=Object.keys(obj)[0];
+            initial.push(obj[key]);
+            return initial;
+          },[]
+        );
+        observer.next(data);
+      }
+      observer.complete();  
     };
     reader.onloadend=() => {
-      console.log('reading finished', this.jsonData);  
+      console.log('reading finished');  
       //return jsonData;
     }
-    reader.readAsBinaryString(file);
-     return this.jsonData;
+    reader.onerror = (error) => {
+        observer.error(error);
+      };
+    reader.readAsBinaryString(file); // Or readAsDataURL, readAsArrayBuffer, readAsBinaryString
+     });
   }
 
 }

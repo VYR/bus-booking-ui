@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, inject, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, inject, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
@@ -24,7 +24,7 @@ import { ExcelTestService } from '../../../core/services/excel-test.service';
   templateUrl: './ud-table.component.html',
   styleUrl: './ud-table.component.css'
 })
-export class UdTableComponent   implements OnInit, AfterViewInit {
+export class UdTableComponent   implements OnInit, AfterViewInit, OnChanges {
   excelService:ExcelTestService = inject(ExcelTestService);
   @Input() tableConfig:ITableConfig;
   @Output() onCellClick:EventEmitter<any>=new EventEmitter();
@@ -37,8 +37,18 @@ export class UdTableComponent   implements OnInit, AfterViewInit {
   columnTypes=ITableColumnType;
   constructor() {
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.populateTableData();
+  }
 
   ngOnInit(): void {    
+    this.populateTableData();
+  }
+  multiselectEvent(action:string){
+    this.onCellClick.emit({key:action,data:this.selection.selected});
+  }
+  populateTableData(){
+    this.selection.clear();
     console.log(this.tableConfig.data);
     if(this.tableConfig.data.length>0){
       this.displayedColumns=this.tableConfig.cols.map((e:any) => e?.key);
@@ -49,7 +59,6 @@ export class UdTableComponent   implements OnInit, AfterViewInit {
 
     this.dataSource = new MatTableDataSource(this.tableConfig?.data || []);
   }
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

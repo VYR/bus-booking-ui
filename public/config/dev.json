@@ -3,7 +3,7 @@
     "title":"Green Bus"
   },
   "api":{
-    "url":"",
+    "url":"http://localhost:9091/api/",
     "useMockApis":false
   }
 }

@@ -26,9 +26,9 @@ export const CACHE_KEYS:any={
 }
 
 export const CONFIGURATION={
-  USER_ENCRYPTION_FOR_CONFIG_SERVICE:false,
-  ORIGINAL_CONFIG_PATH:'/config/dev.json',
-  ENCRYPTED_CONFIG_PATH:'/config_encrypted/env.json',
+  USE_ENCRYPTION_FOR_CONFIG_SERVICE:false,
+  ORIGINAL_CONFIG_PATH:'/config/',
+  ENCRYPTED_CONFIG_PATH:'/config_encrypted/',
   ORIGINAL_API_CONFIG_PATH:'/config/api-operations.json',
   ENCRYPTED_API_CONFIG_PATH:'/config_encrypted/api-operations.json'
 }

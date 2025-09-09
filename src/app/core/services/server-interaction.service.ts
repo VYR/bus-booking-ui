@@ -46,14 +46,14 @@ export class ServerInteractionService {
     return this.http.put(url,body,{headers,params});
   }
 
-  processDeleteRequest(operation:string,headers:HttpHeaders=new HttpHeaders(),params:HttpParams=new HttpParams()){ 
-    return this.http.delete(this.prepareUrl(operation).url,{headers,params});
+  processDeleteRequest(operation:string,pathVariables:any='',body:any={},headers:HttpHeaders=new HttpHeaders(),params:HttpParams=new HttpParams()){ 
+    return this.http.delete(this.prepareUrl(operation).url+(pathVariables.length?pathVariables:''),{headers,params,body});
   }
 
   prepareUrl(operation:string){
     this.configData=this.configService.getConfigSignalData();
     const apiOperation:IAPIOperation=this.configData.apiOperations[operation];
-    const url=this.configData.basic.api.url+(apiOperation.useMockApi?apiOperation.mockApiEndPoint:apiOperation.endpoint);
+    const url=this.configData.basic.api.url+(apiOperation?.useMockApi?apiOperation.mockApiEndPoint:apiOperation.endpoint);
     return {url,apiOperation};
   }
   prepareHeaders(data:any):HttpHeaders{

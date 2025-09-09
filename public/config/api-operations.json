@@ -3,5 +3,30 @@
     "endpoint":"login",
     "useMockApi":true,
     "mockApiEndPoint":"mock-api/login.json"
+  },
+  "getAllPermissions":{
+    "endpoint":"permissions/getAlllist",
+    "useMockApi":false,
+    "mockApiEndPoint":""
+  },
+  "addSinglePermission":{
+    "endpoint":"permissions/create",
+    "useMockApi":false,
+    "mockApiEndPoint":""
+  },
+  "addBulkPermissions":{
+    "endpoint":"permissions/create/bulk",
+    "useMockApi":false,
+    "mockApiEndPoint":""
+  },
+  "deleteSinglePermission":{
+    "endpoint":"permissions/",
+    "useMockApi":false,
+    "mockApiEndPoint":""
+  },
+  "deleteBulkPermissions":{
+    "endpoint":"permissions/delete/bulk",
+    "useMockApi":false,
+    "mockApiEndPoint":""
   }
 }
