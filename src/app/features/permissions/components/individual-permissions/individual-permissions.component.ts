@@ -41,7 +41,9 @@ export class IndividualPermissionsComponent implements OnInit{
     const formData:any=this.form.value;
     console.log(formData);
     const payload={
-      permissionName:formData?.permission_name
+      permissionName:formData?.permission_name,
+      permissionUuid:formData?.permission_uuid
+      
     };
     this.sandbox.addSinglePermission(payload).subscribe(
       (res:any) => {
@@ -64,11 +66,15 @@ export class IndividualPermissionsComponent implements OnInit{
   addBulk(){
     const file=this.selectedFile;
     console.log(file);
-    this.excelService.readExcelFile(file).subscribe(
+    this.excelService.readExcelFile(file,false,true).subscribe(
       (data:any) => {
         console.log(data);
         if(data){
-          const payload=(data || []).map((e:any) => {return {permissionName:e};});
+          const payload=(data || []).map((e:any) => {return {
+            permissionName:e['Permission Name'],
+            permissionUuid:e['Permission UUID'],
+            parent:e['Permission Parent ID'] || 0
+          };});
           this.sandbox.addBulkPermissions(payload).subscribe(
             (res:any) => {
               if(res?.list){
@@ -81,5 +87,11 @@ export class IndividualPermissionsComponent implements OnInit{
       }
     );
    
+  }
+  downloadStaticExcelFile(){
+    let link = document.createElement("a");
+    link.download = "Add-Bulk-Permissions.xlsx";
+    link.href = "/assets/content/add-bulk-permissions.xlsx";
+    link.click();
   }
 }

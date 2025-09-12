@@ -25,6 +25,7 @@ export class PermissionsListComponent implements OnInit{
       uuid:'',
       key:'id',
       displayName:'ID',
+      sticky:true
     },
     {
       uuid:'',
@@ -63,6 +64,7 @@ export class PermissionsListComponent implements OnInit{
           useDefaultFilter:false,
           exportExcel:true,
           selection:true,
+          selectionStickey:true
           
         };
     this.getData();

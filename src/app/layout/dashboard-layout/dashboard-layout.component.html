@@ -1,49 +1,36 @@
-<div class="flex flex-row w-full bg-gray-100">
+<div class="lg:flex md:flex flex-row w-full bg-gray-100">
     <div class="flex-3/12">
-        <div class="flex flex-col w-full ">
+        <div class="h-screen lg:flex md:flex flex-col z-[2000] fixed bg-white w-full  hidden" [class]="mobileParams?.dashboard?.showSideMenu?'block!':''">
             <div class=" relative flex flex-col w-full mb-4">
-                <app-ud-card [type]="cardTypes.ONLY_BODY" [classes]="'rounded-0 fixed top-0 z-[1]  w-[25%]'">
+                <app-ud-card [type]="cardTypes.ONLY_BODY" [classes]="'rounded-0  bg-white'">
                     <ng-container card-body-2>
                         <!-- <div class="flex w-full p-4 max-w-lg flex-col rounded-lg bg-white shadow-sm border border-slate-200 my-6"> -->
-                            <div class="flex items-center gap-4 text-slate-800 w-full">
+                            <div class="flex flex-row gap-4 text-slate-800 w-full">
                                 <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80" alt="Tania Andrew" class="relative inline-block h-[58px] w-[58px] !rounded-full  object-cover object-center" />
-                                <div class="flex w-full flex-col">
-                                <div class="flex items-center justify-between">
-                                    <h5 class="text-xl font-semibold text-slate-800">
+                                <div class="flex w-full gap-1 flex-col bg-white">
+                                    <h5 class="text-[0.8rem] lg:text-xl md:text-xl font-semibold text-slate-800">
                                     Tania Andrew
                                     </h5>
-                                    <div class="flex items-center gap-0 5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-yellow-600">
-                                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-yellow-600">
-                                        <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-yellow-600">
-                                        <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-yellow-600">
-                                        <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-yellow-600">
-                                        <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd"></path>
-                                    </svg>
+                                    <p class="text-[0.5rem] uppercase font-bold text-slate-500 mt-0.5">
+                                        Admin
+                                    </p>
+                                    <div class="flex flex-row gap-1 items-center">
+                                        @for (item of [1,2,3,4,5]; track $index) {
+                                        <i class="las la-star text-[0.8rem] text-yellow-600"></i>
+                                        }
                                     </div>
-                                </div>
-                                <p class="text-xs uppercase font-bold text-slate-500 mt-0.5">
-                                    Designer  Google
-                                </p>
-                                </div>
+                                </div>                                
+                                <i (click)="closeSideMenu()" class="las la-times text-[1.4rem] font-bold"></i>
                             </div>
                         <!-- </div> -->
                     </ng-container>
                 </app-ud-card>
             </div>
             <div class="relative flex flex-col w-full">
-                <app-ud-card [type]="cardTypes.ONLY_BODY" [classes]="'rounded-0 min-h-[100vh] mt-[5rem]'">
+                <app-ud-card [type]="cardTypes.ONLY_BODY" [classes]="'rounded-0  '">
                     <ng-container card-body-2>
-                        <div class="flex flex-col">
-                            <app-sidebar></app-sidebar>
+                        <div class="flex flex-col min-h-[100vh] overflow-y-auto">
+                            <app-sidebar (onMenuClick)="closeSideMenu()"></app-sidebar>
                         </div>
                     </ng-container>
                 </app-ud-card>
@@ -51,8 +38,38 @@
         </div>
     </div>
     <div class="flex-9/12 relative">
-        <div class="z-[1] flex flex-col fixed w-full">
-            <app-dashboard-right-header></app-dashboard-right-header>
+        <div class="z-[1000] flex flex-col fixed w-full">
+            <app-ud-card [type]="cardTypes.ONLY_BODY" [classes]="'w-full rounded-0 py-[0.7rem] bg-white bg-opacity-90 sticky top-0 shadow'">
+                <ng-container card-body-2>
+                    <div class="flex flex-col">
+                    <div class="flex flex-row  px-2 text-slate-800  lg:gap-[1rem] md:gap-[1rem]">
+                        <a href="#"
+                            class="lg:flex md:flex items-center hidden cursor-pointer text-[0.6rem] py-1.5 text-base text-slate-800 font-semibold">
+                            Easy Bus Booking
+                        </a>
+                        <!-- <div class=""> -->
+                        <ul class="flex  flex-row gap-6 justify-baseline top-menu"> 
+                            <li class="lg:hidden md:hidden flex items-center justify-baseline p-1 gap-x-2 text-slate-600">
+                                <i class="las la-bars" (click)="openSideMenu()"></i>
+                            </li>              
+                            <li class="flex items-center justify-baseline p-1 text-sm gap-x-2 text-slate-600">
+                                <i class="las la-user-circle"></i>        
+                                <a href="#" class="lg:flex md:flex items-center hidden">
+                                    Profile
+                                </a>
+                            </li>
+                            <li class="flex items-center justify-baseline p-1 gap-x-2 text-slate-600">
+                                <i class="las la-sign-out-alt"></i>
+                                <a href="#" class="lg:flex md:flex items-center hidden">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- </div>                         -->
+                    </div>
+                    </div>
+                </ng-container>
+            </app-ud-card>
        </div>
         <div class="flex flex-col pt-[6rem] px-2 max-h[100vh]">
             <router-outlet />

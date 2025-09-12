@@ -25,6 +25,7 @@ export interface ITableConfig{
     data:Array<any>;
     cols:Array<ITableColumns>;
     selection?:boolean;
+    selectionStickey?:boolean;
     useDefaultFilter?:boolean;
     exportExcel?:boolean;
     exportPDF?:boolean;
@@ -37,6 +38,7 @@ export interface ITableColumns{
     icon?:string;
     width?:string;
     height?:string;
+    sticky?:boolean;
     type?:ITableColumnType
 }
 

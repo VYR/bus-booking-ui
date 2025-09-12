@@ -7,9 +7,21 @@
       <p class="text-slate-500 font-light">
         Nice to meet you! Enter your details to register.
       </p>
-      <form class="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+      <form [formGroup]="form" class="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
         <div class="mb-1 flex flex-col gap-6">
-          <div class="w-full max-w-sm min-w-[200px]">
+          <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input matInput formControlName="firstName" placeholder="First Name ">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Last name</mat-label>
+            <input matInput formControlName="lastName" placeholder="Last Name ">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email ID</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="E.g name@example.com">
+          </mat-form-field>
+          <!--<div class="w-full max-w-sm min-w-[200px]">
             <label class="block mb-2 text-sm text-slate-600">
               First Name
             </label>
@@ -26,8 +38,13 @@
               Email
             </label>
             <input type="email" class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Your Email" />
-          </div>
-          <div class="w-full max-w-sm min-w-[200px]">
+          </div>-->
+          <mat-form-field class="example-full-width">
+            <mat-label>Mobile Number</mat-label>
+            <span matTextPrefix>+91 &nbsp;</span>
+            <input type="text" maxlength="10" matInput placeholder="Mobile Number" formControlName="mobile">
+          </mat-form-field>
+          <!-- <div class="w-full max-w-sm min-w-[200px]">
             <label class="block mb-1 text-sm text-slate-600">Enter Phone Number</label>
             <div class="relative mt-2">
               <div class="absolute top-2 left-0 flex items-center pl-3">
@@ -75,11 +92,12 @@
                 placeholder="324-456-2323"
                 pattern="[0-9]*"
                 inputmode="numeric"
+
                 maxlength="12"
               />
             </div>
           </div>
-          <!-- <div class="w-full max-w-sm min-w-[200px]">
+          <div class="w-full max-w-sm min-w-[200px]">
             <div class="flex flex-row gap-2">
                 <div class="flex-3/12">
                   <div class="flex flex-col">
@@ -99,13 +117,14 @@
               </div>
             </div>
           </div> -->
-          <div class="w-full max-w-sm min-w-[200px]">
+          <!-- <div class="w-full max-w-sm min-w-[200px]">
             <label class="block mb-2 text-sm text-slate-600">
               Password
             </label>
             <input type="password" class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Your Password" />
-          </div>
+          </div> -->
         </div>
+        <button class="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" matButton="filled" type="submit">Sign Up</button>
         <button class="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
           Sign Up
         </button>

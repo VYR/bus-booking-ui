@@ -15,13 +15,16 @@
         @apply cursor-pointer flex flex-row items-baseline  w-full p-3 leading-tight transition-all rounded-lg outline-none text-start bg-gray-200; 
     }
     .h-menu-item{
-        @apply pl-3 pr-3 py-2 cursor-pointer rounded-[0.5rem] mb-2 bg-gray-200 text-blue-500 min-w-fit font-bold;
+        @apply pl-2 pr-2 py-1 text-[0.8rem] cursor-pointer rounded-[0.5rem] mb-2 bg-gray-200 text-blue-500 min-w-fit font-bold;
     }
     .card-heading{
-        @apply mb-2 text-slate-800 text-xl font-semibold;
+        @apply mb-2 text-slate-800 text-[0.9rem] font-semibold;
     }
 }
 
+.la-file-excel{
+    color: #1eab1e;
+}
 .dashboard-router-active-bg{
     background-color: #b9e9f5;
 }
@@ -79,6 +82,12 @@ td.mat-cell {
     @apply text-[1rem]! text-blue-400!;
 }
 
+.top-menu i{
+    @apply text-[1.5rem]! text-blue-400!;
+}
+.top-menu span{
+    @apply text-[1rem]! text-blue-400!;
+}
 .card-head i{
     @apply cursor-pointer text-2xl font-semibold text-blue-600;
 }

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { UdCardComponent } from '../../../../shared/components/ud-card/ud-card.component';
 import { CARD_DESIGN_TYPES } from '../../../../shared/shared.enums';
-import { UdIconsComponent } from "../../../../shared/components/ud-icons/ud-icons.component";
+import { MobileScreenService } from '../../../../shared/services/mobile-screen.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ import { UdIconsComponent } from "../../../../shared/components/ud-icons/ud-icon
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   cardTypes=CARD_DESIGN_TYPES;
   cardsList:Array<any>=[
     {
@@ -60,4 +60,14 @@ export class HomeComponent {
       bgImage:'offer-bg-1'
     }
   ];
+  mobileScreen:MobileScreenService = inject(MobileScreenService);
+
+  constructor(){
+
+  }
+  ngOnInit(): void {
+   
+  }
+
+
 }

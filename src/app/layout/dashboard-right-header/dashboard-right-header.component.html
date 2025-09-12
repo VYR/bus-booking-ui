@@ -1,22 +1,25 @@
 <app-ud-card [type]="cardTypes.ONLY_BODY" [classes]="'w-full rounded-0 py-[0.7rem] bg-white bg-opacity-90 sticky top-0 shadow'">
     <ng-container card-body-2>
         <div class="flex flex-col">
-        <div class="flex flex-row  px-4 text-slate-800  gap-[5rem]">
+        <div class="flex flex-row  px-2 text-slate-800  lg:gap-[1rem] md:gap-[1rem]">
             <a href="#"
-                class=" cursor-pointer py-1.5 text-base text-slate-800 font-semibold">
+                class="lg:flex md:flex items-center hidden cursor-pointer text-[0.6rem] py-1.5 text-base text-slate-800 font-semibold">
                 Easy Bus Booking
             </a>
             <!-- <div class=""> -->
-            <ul class="flex  flex-row gap-6 justify-baseline top-menu">                
+            <ul class="flex  flex-row gap-6 justify-baseline top-menu"> 
+                <li class="lg:hidden md:hidden flex items-center justify-baseline p-1 gap-x-2 text-slate-600">
+                    <i class="las la-bars" (click)="openSideMenu()"></i>
+                </li>              
                 <li class="flex items-center justify-baseline p-1 text-sm gap-x-2 text-slate-600">
                     <i class="las la-user-circle"></i>        
-                    <a href="#" class="flex items-center">
+                    <a href="#" class="lg:flex md:flex items-center hidden">
                         Profile
                     </a>
                 </li>
                 <li class="flex items-center justify-baseline p-1 gap-x-2 text-slate-600">
                     <i class="las la-sign-out-alt"></i>
-                    <a href="#" class="flex items-center">
+                    <a href="#" class="lg:flex md:flex items-center hidden">
                         Logout
                     </a>
                 </li>

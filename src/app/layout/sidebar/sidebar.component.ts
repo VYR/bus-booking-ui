@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 
 @Component({
@@ -60,4 +60,5 @@ export class SidebarComponent {
       name:'Enquiries'
     }
   ];
+  @Output() onMenuClick:EventEmitter<any>=new EventEmitter();
 }

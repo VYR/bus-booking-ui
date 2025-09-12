@@ -14,3 +14,12 @@ export interface IUser{
 export interface ICacheKeys{
   USER_CONFIG:string;
 }
+
+export class IMobileScreen{
+  public dashboard: IMobileScreenDashBoard;
+  public main: IMobileScreenDashBoard;
+}
+
+export class IMobileScreenDashBoard{
+  showSideMenu:boolean;
+}
