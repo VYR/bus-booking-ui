@@ -19,4 +19,8 @@ export class AuthService {
     return this.server.processGetRequest(OPERATIONS.LOGIN);
   }
 
+  signup(params:any){
+    return this.server.processPostRequest(OPERATIONS.SIGNUP,params);
+  }
+
 }

@@ -1,5 +1,6 @@
 export const OPERATIONS={
     LOGIN:'login',
+    SIGNUP:'signup',
     GET_ALL_PERMISSIONS:'getAllPermissions',
     ADD_SINGLE_PERMISSION:'addSinglePermission',
     ADD_BULK_PERMISSIONS:'addBulkPermissions',

@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { ApplicationContextService } from '../../state/application-context.service';
 import { CACHE_KEY_NAMES } from '../../shared/shared.enums';
 import { tap } from 'rxjs';
+import { ToasterService } from './toaster.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { tap } from 'rxjs';
 export class AuthSandboxService {
 
   authService:AuthService = inject(AuthService);  
+  toaster:ToasterService = inject(ToasterService);
   private appContext:ApplicationContextService = inject(ApplicationContextService);
 
   constructor() { }
@@ -24,6 +26,16 @@ export class AuthSandboxService {
         (data:any) => {
             console.log(data);
             this.appContext.updateSessionData(CACHE_KEY_NAMES.USER_CONFIG,data);
+        }
+      )
+    );
+  }
+
+  signup(params:any){
+    return this.authService.signup(params).pipe(
+      tap(
+        (res:any) => {
+          this.toaster.showSuccess(res?.message);
         }
       )
     );

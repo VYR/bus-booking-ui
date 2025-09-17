@@ -1,4 +1,4 @@
-<app-ud-card [type]="cardTypes.ONLY_BODY">
+<app-ud-card [type]="cardTypes.ONLY_BODY"  [classes]="'mt-4'">
   <ng-container card-body-2>
     <div class="relative flex flex-col rounded-xl bg-transparent">
       <h4 class="block text-xl font-medium text-slate-800">
@@ -7,11 +7,11 @@
       <p class="text-slate-500 font-light">
         Nice to meet you! Enter your details to register.
       </p>
-      <form [formGroup]="form" class="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-        <div class="mb-1 flex flex-col gap-6">
+      <form [formGroup]="form" class="mt-8 mb-2">
+        <div class="mb-1 flex flex-col">
           <mat-form-field>
             <mat-label>First name</mat-label>
-            <input matInput formControlName="firstName" placeholder="First Name ">
+            <input matInput formControlName="firstName" placeholder="First Name " >
           </mat-form-field>
           <mat-form-field>
             <mat-label>Last name</mat-label>
@@ -44,90 +44,21 @@
             <span matTextPrefix>+91 &nbsp;</span>
             <input type="text" maxlength="10" matInput placeholder="Mobile Number" formControlName="mobile">
           </mat-form-field>
-          <!-- <div class="w-full max-w-sm min-w-[200px]">
-            <label class="block mb-1 text-sm text-slate-600">Enter Phone Number</label>
-            <div class="relative mt-2">
-              <div class="absolute top-2 left-0 flex items-center pl-3">
-                <button type="button"
-                  (click)="showCountryCodes=true"
-                  class="h-full text-sm flex justify-center items-center bg-transparent text-slate-700 focus:outline-none"
-                >
-                  <span id="dropdownSpan">+33</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="h-4 w-4 ml-1"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </button>
-                <div class="h-6 border-l border-slate-200 ml-2"></div>
-                @if (showCountryCodes) {
-                <div
-                  class="min-w-[150px] absolute left-0 w-full mt-10  bg-white border border-slate-200 rounded-md shadow-lg z-10"
-                >
-                  <ul >
-                    <li  (click)="showCountryCodes=false" class="px-4 py-2 text-slate-600 hover:bg-slate-50 text-sm cursor-pointer" data-value="+33">
-                      France (+33)
-                    </li>
-                    <li class="px-4 py-2 text-slate-600 hover:bg-slate-50 text-sm cursor-pointer" data-value="+49">
-                      Germany (+49)
-                    </li>
-                    <li class="px-4 py-2 text-slate-600 hover:bg-slate-50 text-sm cursor-pointer" data-value="+34">
-                      Spain (+34)
-                    </li>
-                    <li class="px-4 py-2 text-slate-600 hover:bg-slate-50 text-sm cursor-pointer" data-value="+1">
-                      USA (+1)
-                    </li>
-                  </ul>
-                </div>
-              }
-              </div>
-              <input
-                type="tel"
-                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pr-3 pl-20 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                placeholder="324-456-2323"
-                pattern="[0-9]*"
-                inputmode="numeric"
-
-                maxlength="12"
-              />
-            </div>
-          </div>
-          <div class="w-full max-w-sm min-w-[200px]">
-            <div class="flex flex-row gap-2">
-                <div class="flex-3/12">
-                  <div class="flex flex-col">
-                    <label class="block mb-2 text-sm text-slate-600">
-                      Country Code
-                    </label>
-                    <input type="number" maxlength="3" class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="E.g: 91" />
-                  </div>
-                </div>
-                <div class="flex-8/12">
-                  <div class="flex flex-col">
-                    <label class="block mb-2 text-sm text-slate-600">
-                      Mobile Number
-                    </label>
-                    <input type="number" maxlength="10" class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="E.g 0372639473" />
-                  </div>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="w-full max-w-sm min-w-[200px]">
-            <label class="block mb-2 text-sm text-slate-600">
-              Password
-            </label>
-            <input type="password" class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Your Password" />
-          </div> -->
+          <mat-form-field>
+            <mat-label>Create Password</mat-label>
+            <input matInput formControlName="npwd" placeholder="Create Password" (focus)="form.controls?.['cpwd']?.setValue(''); form.controls['cpwd'].markAsUntouched()">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="cpwd" placeholder="Confirm Password">
+          </mat-form-field>
+          @if (form.controls['cpwd'].errors?.['passwordsMismatch'] && form.controls?.['cpwd']?.touched) {
+            <mat-error>
+              Passwords do not match.
+            </mat-error>
+          }
         </div>
-        <button class="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" matButton="filled" type="submit">Sign Up</button>
-        <button class="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-          Sign Up
-        </button>
+        <button (click)="signup()" [disabled]="form.invalid" class="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" matButton="filled" type="submit">Sign Up</button>
         <p class="flex justify-center mt-6 text-sm text-slate-600">
           Already have an account?
           <a [routerLink]="routes.LOGIN" class="ml-1 text-sm font-semibold text-slate-700 underline">

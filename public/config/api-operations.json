@@ -4,6 +4,11 @@
     "useMockApi":true,
     "mockApiEndPoint":"mock-api/login.json"
   },
+  "signup":{
+    "endpoint":"users/create-bulk",
+    "useMockApi":false,
+    "mockApiEndPoint":""
+  },
   "getAllPermissions":{
     "endpoint":"permissions/getAlllist",
     "useMockApi":false,
